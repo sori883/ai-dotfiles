@@ -1,0 +1,15 @@
+name: ai-dotfiles
+version: 1.0.0
+description: sori883's Claude Code dotfiles (agents, prompts, instructions, skills)
+author: sori883
+
+type: hybrid
+target: claude
+
+includes: auto
+
+dependencies:
+  apm: []
+  mcp: []
+
+scripts: {}
