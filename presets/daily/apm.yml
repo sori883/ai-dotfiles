@@ -1,5 +1,5 @@
 name: preset-daily-work
-version: 1.0.0
+version: 0.0.1
 description: 日常業務向けプリセット。skill / prompt をまとめて install する。
 author: sori883
 dependencies:
