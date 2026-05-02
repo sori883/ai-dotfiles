@@ -4,12 +4,12 @@ description: 開発プロジェクト向けプリセット。skill / agent / ins
 author: sori883
 dependencies:
   apm: []
-  # 例: 各 primitive を .apm/ 配下に追加したらここに登録する
+  # 例: primitive を repo root 配下に追加したらここに登録する
   #   - sori883/ai-dotfiles/skills/docs-review
   #   - sori883/ai-dotfiles/skills/docs-write
-  #   - sori883/ai-dotfiles/agents/planner
-  #   - sori883/ai-dotfiles/agents/orchestrator
-  #   - sori883/ai-dotfiles/instructions/work-in-project-dir
+  #   - sori883/ai-dotfiles/agents/planner.agent.md
+  #   - sori883/ai-dotfiles/agents/orchestrator.agent.md
+  #   - sori883/ai-dotfiles/instructions/work-in-project-dir.instructions.md
   mcp:
     - io.github.upstash/context7
 includes: auto

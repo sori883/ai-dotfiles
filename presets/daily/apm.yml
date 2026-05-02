@@ -4,11 +4,11 @@ description: 日常業務向けプリセット。skill / prompt をまとめて 
 author: sori883
 dependencies:
   apm:
-    - sori883/ai-dotfiles/agents/doc-updater
-    - sori883/ai-dotfiles/agents/orchestrator
-    - sori883/ai-dotfiles/agents/planner
-    - sori883/ai-dotfiles/instructions/proactive-subagents-skills
-    - sori883/ai-dotfiles/prompts/blog-review
+    - sori883/ai-dotfiles/agents/doc-updater.agent.md
+    - sori883/ai-dotfiles/agents/orchestrator.agent.md
+    - sori883/ai-dotfiles/agents/planner.agent.md
+    - sori883/ai-dotfiles/instructions/proactive-subagents-skills.instructions.md
+    - sori883/ai-dotfiles/prompts/blog-review.prompt.md
     - sori883/ai-dotfiles/skills/docs-review
     - sori883/ai-dotfiles/skills/docs-write
     - sori883/ai-dotfiles/skills/empirical-prompt-tuning
