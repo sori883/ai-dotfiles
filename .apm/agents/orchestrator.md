@@ -29,26 +29,28 @@ Use this subagent when:
    - Plan sequential steps based on dependencies
 
 2. **Step Planning**
-   - Break down into 2-4 sequential steps
-   - Each step can contain multiple parallel subtasks
-   - Define what context from previous steps is needed
+   - Aim for 2-4 starting steps (this is a heuristic, not a cap — Step 4 adaptation may insert or remove steps)
+   - Each step contains 1 or more parallel subtasks. **A 1-subtask step is allowed and expected** when the work is inherently sequential (initial discovery, final aggregation) or when downstream parallelism depends on its output
+   - Define what context from previous steps is needed (state explicitly in the plan, not implicitly)
 
 3. **Step-by-Step Execution**
-   - Execute all subtasks within a step in parallel
-   - Wait for all subtasks in current step to complete
-   - Pass relevant results to next step
-   - Request concise summaries (100-200 words) from each subtask
+   - Dispatch all subtasks within a step as parallel `Task` calls in a single message; do not read or act on any subtask result until the full batch has returned
+   - Each `Task` prompt must instruct the subtask to return a 100-200 word self-summary
+   - **Summary layering** (3 layers):
+     - Per-subtask: 100-200 words (set by the dispatch prompt)
+     - Inter-step pass-forward: subtask summaries flow verbatim to the next step; the orchestrator recompresses them into a single 200-300 word aggregated summary only when a step has ≥4 subtasks
+     - Final aggregation (Process step 5): one section per step, each section ≤150 words, citing its source step
+   - **File-write contention rule**: two parallel subtasks must NOT write to the same file. If the plan would cause this, merge those subtasks into one
+   - **Partial-failure contract**: if one subtask in a parallel batch fails, do NOT abort the others. Collect partial results, record the failure, and decide in **the same step's review block** (Process step 4) whether to retry, replace with a different subtask, or surface to parent
+   - **Intra-step gating**: if a node within a step depends on the output of a sibling node (e.g., commit must wait for validation), promote that node into its own subsequent step rather than gating mid-batch
 
 4. **Step Review and Adaptation**
-   - After each step completion, review results
-   - Validate if remaining steps are still appropriate
-   - Adjust next steps based on discoveries
-   - Add, remove, or modify subtasks as needed
+   - After each step completion, output a visible `Step N review:` block with three fields: (a) result summary (1-3 lines), (b) plan changes — added / removed / modified subtasks for upcoming steps with reason, (c) escalation — anything to surface to the parent agent
+   - If no plan changes are needed, write `plan changes: none` (silent adaptation is not allowed; the artifact must be present)
 
 5. **Progressive Aggregation**
-   - Synthesize results from completed step
-   - Use synthesized results as context for next step
-   - Build comprehensive understanding progressively
+   - Synthesize results from completed step into the running context for the next step
+   - Final aggregation produces the consolidated result returned to the parent agent (sectioned, with each section citing its source step)
    - Maintain flexibility to adapt plan
 
 ## Example Usage
@@ -104,15 +106,34 @@ When given "analyze test lint and commit":
 - Maintains context across sequential steps within single execution
 
 ### Execution Pattern
-- Always start with a single analysis task to understand the full scope
+- Always start with a single analysis subtask (delegated via `Task`) to understand the full scope
 - Group related parallel tasks within the same step
 - Pass only essential findings between steps (summaries, not full output)
-- Use TodoWrite to track both steps and subtasks for visibility
-- After each step, explicitly reconsider the plan:
+- Use TodoWrite to track both steps and subtasks for visibility — top-level items are steps, nested items are subtasks
+- After each step, the `Step N review:` block (Process step 4) must explicitly answer:
   - Are the next steps still relevant?
   - Did we discover something that requires new tasks?
   - Can we skip or simplify upcoming steps?
   - Should we add new validation steps?
+
+### Tool boundary (delegation vs direct execution)
+Single criterion: **anything with non-trivial latency, network egress, or filesystem mutation must be delegated via `Task`. Everything else may run locally.**
+
+Concrete examples:
+- Local OK: `Read` a 50-line config to plan dispatch; `Glob` for top-level files; `Grep` a small directory
+- Must delegate: any `npm`/`pnpm` script (test/lint/build); any Bash command that writes to the filesystem; any `Edit`/`Write` to repo files; any network call (`curl`, `gh api`)
+
+The frontmatter grants Bash, Read, Grep, Glob, Edit, Write so the orchestrator can do local context-gathering — direct mutating use defeats the purpose of orchestration.
+
+### TodoWrite shape
+Top-level items are steps; subtasks are nested under their step:
+```
+- [in_progress] Step 1: Initial analysis
+    - [in_progress] 1.1 Discover toolchain
+- [pending] Step 2: Quality checks (parallel)
+    - [pending] 2.1 Run tests
+    - [pending] 2.2 Run lint + typecheck
+```
 
 ## Adaptive Planning Example
 

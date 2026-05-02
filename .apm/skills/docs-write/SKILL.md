@@ -1,7 +1,6 @@
 ---
 name: docs-write
 description: Write documentation following Metabase's conversational, clear, and user-focused style. Use when creating or editing documentation files (markdown, MDX, etc.).
-allowed-tools: Read, Write, Grep, Bash, Glob
 ---
 
 # Documentation Writing Skill
@@ -36,10 +35,11 @@ allowed-tools: Read, Write, Grep, Bash, Glob
 - American spelling, serial commas
 - Keep images minimal and scoped tight
 
-**Format:**
+**Format (writer-side workflow — NOT content that goes into the document):**
 
-- Run prettier on the file after making edits: `yarn prettier --write <file-path>`
-- This ensures consistent formatting across all documentation
+- After editing a documentation file on disk, run `yarn prettier --write <file-path>`
+- This is a step the writer performs at the end — never include the prettier command in the document body
+- Skip this step when the deliverable is a snippet, paragraph rewrite, or any output that is not a concrete file edit
 
 ### Common patterns
 
@@ -92,3 +92,5 @@ Not: "(remember to run X before Y...)" buried in a paragraph.
 | can't, don't               | cannot, do not     |
 | **Filter** button          | \`Filter\` button  |
 | Check out [the docs](link) | Click [here](link) |
+
+**Term-of-art exception**: keep `user` (singular) when it refers to a technical object — a database `USER`, an OS user, an IAM user, a Snowflake `USER`, etc. The "people / companies" swap applies only when "users" generically means humans interacting with Metabase. When the substitution would read awkwardly, rephrase to remove the actor entirely (e.g. "users can summarize their data" → "Metabase summarizes your data").

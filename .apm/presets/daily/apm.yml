@@ -1,0 +1,60 @@
+name: preset-daily-work
+version: 1.0.0
+description: 日常業務向けプリセット。skill / prompt をまとめて install する。
+author: sori883
+dependencies:
+  apm:
+    - sori883/ai-dotfiles/agents/doc-updater
+    - sori883/ai-dotfiles/agents/orchestrator
+    - sori883/ai-dotfiles/agents/planner
+    - sori883/ai-dotfiles/instructions/proactive-subagents-skills
+    - sori883/ai-dotfiles/prompts/blog-review
+    - sori883/ai-dotfiles/skills/docs-review
+    - sori883/ai-dotfiles/skills/docs-write
+    - sori883/ai-dotfiles/skills/empirical-prompt-tuning
+    - sori883/ai-dotfiles/skills/gws-calendar
+    - sori883/ai-dotfiles/skills/image-compressor
+  mcp:
+    - name: serena
+      registry: false
+      transport: stdio
+      command: uvx
+      args:
+        - --from
+        - git+https://github.com/oraios/serena
+        - serena
+        - start-mcp-server
+        - --context
+        - ide-assistant
+        - --project
+        - ./
+    - name: context7
+      registry: false
+      transport: http
+      url: https://context7.liam.sh/mcp
+    - name: awslabs.aws-documentation-mcp-server
+      registry: false
+      transport: stdio
+      command: uvx
+      args:
+        - awslabs.aws-documentation-mcp-server@latest
+      env:
+        FASTMCP_LOG_LEVEL: ERROR
+    - name: atlassian
+      registry: false
+      transport: stdio
+      command: npx
+      args:
+        - -y
+        - mcp-remote
+        - https://mcp.atlassian.com/v1/sse
+    - name: todoist
+      registry: false
+      transport: stdio
+      command: npx
+      args:
+        - -y
+        - mcp-remote
+        - https://ai.todoist.net/mcp
+includes: auto
+scripts: {}

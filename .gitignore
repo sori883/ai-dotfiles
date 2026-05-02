@@ -1,2 +1,5 @@
 .DS_Store
 apm_modules/
+tmp
+CLAUDE.md
+.claude

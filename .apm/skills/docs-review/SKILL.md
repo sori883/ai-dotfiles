@@ -1,7 +1,6 @@
 ---
 name: docs-review
 description: Review documentation changes for compliance with the Metabase writing style guide. Use when reviewing pull requests, files, or diffs containing documentation markdown files.
-allowed-tools: Read, Grep, Bash, Glob
 ---
 
 # Documentation Review Skill
@@ -24,6 +23,12 @@ allowed-tools: Read, Grep, Bash, Glob
 3. Check all issues that violate style guide or significantly impact readability
 4. Only flag issues worth mentioning - if it won't make a material difference to the reader, skip it
 5. **REQUIRED: Number ALL feedback sequentially** - Start from Issue 1 and increment for each issue found
+
+### Numbering and bundling rules
+
+- **One Issue per distinct violation**, even when multiple violations occur on the same line. Bundle only when the fix is the same edit (e.g., deleting one sentence resolves "peppy tone" + "users" + "exclamation point" → one Issue).
+- **Line numbers** refer to the literal file line, counting blank lines, starting at line 1 of the file or hunk being reviewed.
+- **"Suggested fix"** is required when an obvious fix exists; omit when the fix is judgment-dependent (e.g., restructuring a long section).
 
 ## Review checklist
 
@@ -100,6 +105,16 @@ Suggested fix or explanation
 **Issue 3: [Brief title]**
 ...
 ```
+
+**Zero-issues output**: when nothing material is found, output exactly:
+
+```markdown
+## Issues
+
+No material issues found.
+```
+
+Do not add a preamble, explanation, or "looks good" message — the single line above is the entire output.
 
 **Examples:**
 

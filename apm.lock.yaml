@@ -1,0 +1,33 @@
+lockfile_version: '1'
+generated_at: '2026-05-02T00:58:25.714138+00:00'
+dependencies: []
+local_deployed_files:
+- .claude/agents/doc-updater.md
+- .claude/agents/orchestrator.md
+- .claude/agents/planner.md
+- .claude/commands/sample.md
+- .claude/rules/sample.md
+- .claude/skills/docs-review
+- .claude/skills/docs-write
+- .claude/skills/empirical-prompt-tuning
+- .claude/skills/image-compressor
+- .github/agents/doc-updater.agent.md
+- .github/agents/orchestrator.agent.md
+- .github/agents/planner.agent.md
+- .github/instructions/sample.instructions.md
+- .github/prompts/sample.prompt.md
+- .github/skills/docs-review
+- .github/skills/docs-write
+- .github/skills/empirical-prompt-tuning
+- .github/skills/image-compressor
+local_deployed_file_hashes:
+  .claude/agents/doc-updater.md: sha256:c5a5c5cf2846f0d288e4b4932077a42ccd568a7de550f40b40519928a3a4d9f1
+  .claude/agents/orchestrator.md: sha256:856a937487266f518aa905e8be6971923aed2344b7cb000bd86a568370bc97d9
+  .claude/agents/planner.md: sha256:89d84621f5df198d44e7b688ed9d60e88c7d2dbdc320dd64a1bbb63fe58cb555
+  .claude/commands/sample.md: sha256:c6a6a40619ac4d8643f94f494105351530a3b52d57d6a94628cb98097390d20d
+  .claude/rules/sample.md: sha256:44cf27a45a245849cc880c7512af53b8c84315efa7ad6eef75eb35687e2539df
+  .github/agents/doc-updater.agent.md: sha256:c5a5c5cf2846f0d288e4b4932077a42ccd568a7de550f40b40519928a3a4d9f1
+  .github/agents/orchestrator.agent.md: sha256:856a937487266f518aa905e8be6971923aed2344b7cb000bd86a568370bc97d9
+  .github/agents/planner.agent.md: sha256:89d84621f5df198d44e7b688ed9d60e88c7d2dbdc320dd64a1bbb63fe58cb555
+  .github/instructions/sample.instructions.md: sha256:bb4de1908933787cfd07896aec199a705332f35dadc21ad7dd8bd012306522d3
+  .github/prompts/sample.prompt.md: sha256:f6d3dc2c9f75d0f1d0f346eb5672c9774aa392572c07f00e566c54f1a5ecb058
