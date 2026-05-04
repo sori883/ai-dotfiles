@@ -40,6 +40,7 @@ Claude Code 向けの個人用 APM (Agent Package Manager) プロジェクト。
 | `empirical-prompt-tuning` | 中立な executor に実走させ、両面評価しながら頭打ちまで反復してプロンプト/スキルを改善する方法論。 |
 | `eval-harness` | 機能の期待振る舞いを `.claude/evals/<feature>.md` に文書化し、pass@k / pass^k で追跡する評価フレームワーク。 |
 | `gws-calendar` | `gws` CLI で Google カレンダーの予定・カレンダーを操作する。 |
+| `hono` | Hono Web アプリ構築の API/ルーティング/ミドルウェア/JSX/バリデーション/テスト/ストリーミング知識。 |
 | `image-compressor` | `cwebp` / `pngquant` / `jpegoptim` を用いた画像変換・圧縮 (WebP 化、PNG/JPEG 最適化)。 |
 | `iterative-retrieval` | サブエージェントへ渡すコンテキストを広いクエリから絞り込む 4 フェーズ手順。3〜5 ファイルへ収束させる。 |
 | `playwright-cli` | Playwright CLI でブラウザ操作・テスト・コード生成を行う。 |
