@@ -1,5 +1,5 @@
 name: ai-dotfiles
-version: 1.0.0
+version: 0.0.1
 description: APM package providing agents / instructions / prompts / skills consumed via presets
 author: sori883
 dependencies:
