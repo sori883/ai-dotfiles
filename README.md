@@ -84,7 +84,22 @@ Claude Code 向けの個人用 APM (Agent Package Manager) プロジェクト。
 
 ## install
 
+プリセット一括 install:
+
 ```bash
 apm install -t claude sori883/ai-dotfiles/presets/daily
 apm install -t claude sori883/ai-dotfiles/presets/develop
+```
+
+個別 install (skill / prompt / agent / instruction を単体で導入):
+
+```bash
+# skill
+apm install -t claude sori883/ai-dotfiles/skills/<name>
+# prompt
+apm install -t claude sori883/ai-dotfiles/prompts/<name>.prompt.md
+# agent
+apm install -t claude sori883/ai-dotfiles/agents/<name>.agent.md
+# instruction
+apm install -t claude sori883/ai-dotfiles/instructions/<name>.instructions.md
 ```
