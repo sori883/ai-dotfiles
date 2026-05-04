@@ -1,4 +1,4 @@
-name: preset-development
+name: preset-develop
 version: 1.0.0
 description: 開発プロジェクト向けプリセット
 author: sori883
@@ -38,6 +38,22 @@ dependencies:
     - sori883/ai-dotfiles/skills/task-verification
     - sori883/ai-dotfiles/skills/tdd-workflow
   mcp:
-    - io.github.upstash/context7
+    - name: serena
+      registry: false
+      transport: stdio
+      command: uvx
+      args:
+        - --from
+        - git+https://github.com/oraios/serena
+        - serena
+        - start-mcp-server
+        - --context
+        - ide-assistant
+        - --project
+        - ./
+    - name: context7
+      registry: false
+      transport: http
+      url: https://context7.liam.sh/mcp
 includes: auto
 scripts: {}

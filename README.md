@@ -13,7 +13,7 @@ agents / skills / prompts / instructions / MCP サーバーをまとめて配布
 ├── instructions/  # 常時適用インストラクション
 ├── presets/       # 用途別プリセット (apm.yml)
 │   ├── daily/         # 日常業務向け
-│   └── development/   # 開発業務向け
+│   └── develop/       # 開発業務向け
 └── apm.yml        # ルート定義
 ```
 
@@ -69,5 +69,5 @@ skill / prompt / agent / instruction / MCP サーバーをまとめて投入す�
 apm install ./presets/daily
 
 # 開発業務向け
-apm install ./presets/development
+apm install ./presets/develop
 ```
