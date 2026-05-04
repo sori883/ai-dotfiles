@@ -1,15 +1,42 @@
 name: preset-development
 version: 1.0.0
-description: 開発プロジェクト向けプリセット。skill / agent / instruction をまとめて install する。
+description: 開発プロジェクト向けプリセット
 author: sori883
 dependencies:
-  apm: []
-  # 例: primitive を repo root 配下に追加したらここに登録する
-  #   - sori883/ai-dotfiles/skills/docs-review
-  #   - sori883/ai-dotfiles/skills/docs-write
-  #   - sori883/ai-dotfiles/agents/planner.agent.md
-  #   - sori883/ai-dotfiles/agents/orchestrator.agent.md
-  #   - sori883/ai-dotfiles/instructions/work-in-project-dir.instructions.md
+  apm:
+    - sori883/ai-dotfiles/agents/architect.agent.md
+    - sori883/ai-dotfiles/agents/build-error-resolver.agent.md
+    - sori883/ai-dotfiles/agents/code-reviewer.agent.md
+    - sori883/ai-dotfiles/agents/orchestrator.agent.md
+    - sori883/ai-dotfiles/agents/planner.agent.md
+    - sori883/ai-dotfiles/agents/refactor-cleaner.agent.md
+    - sori883/ai-dotfiles/agents/security-reviewer.agent.md
+    - sori883/ai-dotfiles/agents/tech-docs-searcher.agent.md
+    - sori883/ai-dotfiles/instructions/security.instructions.md
+    - sori883/ai-dotfiles/prompts/checkpoint.prompt.md
+    - sori883/ai-dotfiles/prompts/code-review.prompt.md
+    - sori883/ai-dotfiles/prompts/eval.prompt.md
+    - sori883/ai-dotfiles/prompts/evolve.prompt.md
+    - sori883/ai-dotfiles/prompts/instinct-export.prompt.md
+    - sori883/ai-dotfiles/prompts/instinct-import.prompt.md
+    - sori883/ai-dotfiles/prompts/instinct-status.prompt.md
+    - sori883/ai-dotfiles/prompts/learn.prompt.md
+    - sori883/ai-dotfiles/prompts/orchestrate.prompt.md
+    - sori883/ai-dotfiles/prompts/plan.prompt.md
+    - sori883/ai-dotfiles/prompts/refactor-clean.prompt.md
+    - sori883/ai-dotfiles/prompts/sessions.prompt.md
+    - sori883/ai-dotfiles/prompts/skill-create.prompt.md
+    - sori883/ai-dotfiles/prompts/tdd.prompt.md
+    - sori883/ai-dotfiles/prompts/verify.prompt.md
+    - sori883/ai-dotfiles/skills/empirical-prompt-tuning
+    - sori883/ai-dotfiles/skills/eval-harness
+    - sori883/ai-dotfiles/skills/iterative-retrieval
+    - sori883/ai-dotfiles/skills/playwright-cli
+    - sori883/ai-dotfiles/skills/security-review
+    - sori883/ai-dotfiles/skills/strategic-compact
+    - sori883/ai-dotfiles/skills/task-management
+    - sori883/ai-dotfiles/skills/task-verification
+    - sori883/ai-dotfiles/skills/tdd-workflow
   mcp:
     - io.github.upstash/context7
 includes: auto
