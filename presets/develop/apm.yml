@@ -53,7 +53,11 @@ dependencies:
         - ./
     - name: context7
       registry: false
-      transport: http
-      url: https://context7.liam.sh/mcp
+      transport: stdio
+      command: npx
+      args:
+        - -y
+        - mcp-remote
+        - https://context7.liam.sh/mcp
 includes: auto
 scripts: {}

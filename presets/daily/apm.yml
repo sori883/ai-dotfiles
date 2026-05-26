@@ -31,16 +31,12 @@ dependencies:
         - ./
     - name: context7
       registry: false
-      transport: http
-      url: https://context7.liam.sh/mcp
-    - name: awslabs.aws-documentation-mcp-server
-      registry: false
       transport: stdio
-      command: uvx
+      command: npx
       args:
-        - awslabs.aws-documentation-mcp-server@latest
-      env:
-        FASTMCP_LOG_LEVEL: ERROR
+        - -y
+        - mcp-remote
+        - https://context7.liam.sh/mcp
     - name: atlassian
       registry: false
       transport: stdio
